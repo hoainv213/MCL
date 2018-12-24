@@ -1055,3 +1055,18 @@ button i.rotate180{
     transform: translate3d(0, 0, 0);
   }
 }
+.contain_loading{
+  z-index: 99;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,.9);
+}
+.contain_loading img{
+  position: absolute;
+  left: 50%;
+  top: 65%;
+  transform: translate(-50%,-50%);
+}

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
+import ScrollAnimation from "react-animate-on-scroll";
 
 class ItemCurrentProject extends Component{
 
@@ -12,9 +13,11 @@ class ItemCurrentProject extends Component{
                          src={project.image}/>
                 </div>
                 <div className="entries_ce__ color-white">
-                    <h5 className="type_name__ font-size-16">{project.tunure}</h5>
-                    <Link className="a-animation" to="#"><h5 className="limit-text-1 current_title">{project.name}</h5></Link>
-                    <Link className="find_more__" to="#"><button type="button" className="btn-transparent">FIND OUT MORE</button></Link>
+                    <ScrollAnimation duration={1} animateOnce={true} animateIn="ehat">
+                        <h5 className="type_name__ font-size-16">{project.tunure}</h5>
+                        <Link className="a-animation" to="#"><h5 className="limit-text-1 current_title">{project.name}</h5></Link>
+                        <Link className="find_more__" to="#"><button type="button" className="btn-transparent">FIND OUT MORE</button></Link>
+                    </ScrollAnimation>
                 </div>
             </div>
         );

@@ -5,40 +5,43 @@ import ProjectLinkItem from './projectLinkItem';
 import ScrollAnimation from 'react-animate-on-scroll';
 import { connect } from 'react-redux';
 import { fetchCurrentProjects, fetchLinkSection } from "../../actions/index";
-
+import Loading from './../../loading';
 
 class Home extends Component{
 
-    componentDidMount(){
+    componentWillMount(){
         this.props.fetchAll();
     }
 
     render () {
         let {projectsCurrent, linkSection} = this.props;
+        if (projectsCurrent.length === 0 && linkSection.length === 0) {
+            return(
+                <Loading/>
+            )
+        }
         return (
             <div className="home">
                 <Bg_banner />
                 <div className="container">
-                    <ScrollAnimation duration={1} animateOnce={true} animateIn="ehat">
-                        <div id="current-project-mb" className="current-project-mb">
-                            <div className="main_cotain_cr__">
-                                <h3 className="title__ text-center letter-spacing-2 clear-margin color-white">
-                                    <span>CURRENT LAUNCHES</span>
-                                </h3>
-                                <div className="content-accordion-mb">
-                                    <div className="row clear-margin">
-                                        {this.showCurrentProjects(projectsCurrent)}
-                                    </div>
-                                    <div className="display-none">
-                                        <div className="text-center"><i className="color-white fa fa-angle-up"/></div>
-                                        <h4 className="title-accordion text-center letter-spacing-2 clear-margin color-white collapse-eh hiser">
-                                            COLLAPSE
-                                        </h4>
-                                    </div>
+                    <div id="current-project-mb" className="current-project-mb">
+                        <div className="main_cotain_cr__">
+                            <h3 className="title__ text-center letter-spacing-2 clear-margin color-white">
+                                <span>CURRENT LAUNCHES</span>
+                            </h3>
+                            <div className="content-accordion-mb">
+                                <div className="row clear-margin">
+                                    {this.showCurrentProjects(projectsCurrent)}
+                                </div>
+                                <div className="display-none">
+                                    <div className="text-center"><i className="color-white fa fa-angle-up"/></div>
+                                    <h4 className="title-accordion text-center letter-spacing-2 clear-margin color-white collapse-eh hiser">
+                                        COLLAPSE
+                                    </h4>
                                 </div>
                             </div>
                         </div>
-                    </ScrollAnimation>
+                    </div>
                     <div className="project-link">
                         <div className="container-fluids">
                             <div className="p-relative directorOurProperties padding-top-40">
@@ -66,10 +69,10 @@ class Home extends Component{
         if(projectsCurrent.length > 0){
             result = projectsCurrent.map((value , index) =>{
                 return (
-                    <ItemCurrentProject
-                        key={index}
-                        project={value}
-                    />
+                        <ItemCurrentProject
+                            key={index}
+                            project={value}
+                        />
                 )
             });
         }

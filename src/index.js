@@ -9,6 +9,7 @@ import thunk from 'redux-thunk';
 import '../assets/font/raleway.css';
 import '../assets/css/style.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'animate.css';
 import 'jquery';
 import 'bootstrap/dist/js/bootstrap.min';
 const store = createStore(myReducer,applyMiddleware(thunk));
