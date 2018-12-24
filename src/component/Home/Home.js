@@ -3,28 +3,18 @@ import Bg_banner from '../Bg_banner';
 import ItemCurrentProject from './ItemCurrentProject';
 import ProjectLinkItem from './projectLinkItem';
 import ScrollAnimation from 'react-animate-on-scroll';
-import projectsCurrent from './../../reducers/projectsCurrent';
 import { connect } from 'react-redux';
+import { fetchCurrentProjects, fetchLinkSection } from "../../actions/index";
 
 
 class Home extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            projects: [],
-            links: []
-        }
-    }
 
     componentDidMount(){
-        this.setState({
-            // projects: response.data.data
-        })
+        this.props.fetchAll();
     }
 
     render () {
-        console.log(this.props.projects);
-        var {projects,links} = this.state;
+        let {projectsCurrent, linkSection} = this.props;
         return (
             <div className="home">
                 <Bg_banner />
@@ -37,7 +27,7 @@ class Home extends Component{
                                 </h3>
                                 <div className="content-accordion-mb">
                                     <div className="row clear-margin">
-                                        {this.showCurrentProjects(projects)}
+                                        {this.showCurrentProjects(projectsCurrent)}
                                     </div>
                                     <div className="display-none">
                                         <div className="text-center"><i className="color-white fa fa-angle-up"/></div>
@@ -53,7 +43,7 @@ class Home extends Component{
                         <div className="container-fluids">
                             <div className="p-relative directorOurProperties padding-top-40">
                                 {
-                                links.map((value,index)=>{
+                                linkSection.map((value,index)=>{
                                     return (
                                         <ProjectLinkItem
                                             key     = { index }
@@ -71,10 +61,10 @@ class Home extends Component{
         );
     }
 
-    showCurrentProjects = (projects) => {
+    showCurrentProjects = (projectsCurrent) => {
         var result = null;
-        if(projects.length > 0){
-            result = projects.map((value , index) =>{
+        if(projectsCurrent.length > 0){
+            result = projectsCurrent.map((value , index) =>{
                 return (
                     <ItemCurrentProject
                         key={index}
@@ -88,7 +78,18 @@ class Home extends Component{
 }
 const mapStateToProps = (state) => {
     return {
-        projects: state.projects
+        projectsCurrent: state.projectsCurrent,
+        linkSection: state.linkSection,
+
     }
 };
-export default connect(mapStateToProps,null)(Home);
+const mapDispathToProps = (dispatch, props) =>{
+    return{
+        fetchAll : () =>{
+            dispatch(fetchCurrentProjects());
+            dispatch(fetchLinkSection());
+        },
+
+    }
+};
+export default connect(mapStateToProps,mapDispathToProps)(Home);

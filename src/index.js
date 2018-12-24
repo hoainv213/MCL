@@ -2,16 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { BrowserRouter as Router, Route, HashRouter } from 'react-router-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import myReducer from './reducers/index';
 import { Provider } from 'react-redux';
-const store = createStore(myReducer);
+import thunk from 'redux-thunk';
 import '../assets/font/raleway.css';
 import '../assets/css/style.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'jquery';
 import 'bootstrap/dist/js/bootstrap.min';
-
+const store = createStore(myReducer,applyMiddleware(thunk));
 
 const routes = (
     <Provider store={ store }>

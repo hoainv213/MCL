@@ -1,1 +1,3 @@
 export const LIST_PROJECTS_CURRENT = 'LIST_PROJECTS_CURRENT';
+export const LINK_SECTION = 'LINK_SECTION';
+export const MENU = 'MENU';

@@ -6,7 +6,7 @@ let initialState = [];
 var myReducer = (state = initialState , action) => {
 
     switch (action.type) {
-        case Types.LIST_PROJECTS_CURRENT:
+        case Types.LINK_SECTION:
             state = action.data;
             return [...state];
         default:
