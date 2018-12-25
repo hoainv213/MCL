@@ -10,7 +10,7 @@ class ProjectLinkItem extends Component{
         var {links} = this.props;
         var {check_} = this.props;
         return (
-            <ScrollAnimation duration={.8} animateOnce={true} animateIn="ehat">
+            <ScrollAnimation duration={.8} animateOnce={false} animateIn="ehat">
                 <div className="row row-2-hp padding-bottom-40">
                     <div className="line_bottom__"/>
                     <div className="col-12 text-center padding-bottom-15 padding-top-15">
@@ -21,7 +21,7 @@ class ProjectLinkItem extends Component{
             </ScrollAnimation>
         );
     }
-    showStyleLink (check,links){
+    showStyleLink = (check,links) =>{
         var result = null;
         if( Number.isInteger(check) ){
             if(check % 2 === 0){

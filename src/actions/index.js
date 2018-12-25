@@ -8,6 +8,7 @@ export const fetchCurrentProjects = () => {
             dispatch(actionFetchCurrentProjects(res.data));
         });
     }
+
 };
 export const actionFetchCurrentProjects = (currentProjects) => {
     return{

@@ -30,7 +30,6 @@ module.exports = {
         rules: [
             {
                 test: /\.jsx$|\.js$/,
-                exclude: /node_modules/,
                 use: 'babel-loader',
             },
             {
@@ -51,8 +50,7 @@ module.exports = {
             },
             {
                 test: /\.(jpe?g|png|gif)$/,
-                exclude: /node_modules/,
-                loader: 'url-loader?limit=2048&name=images/[name].[ext]'
+                loader: 'url-loader?limit=10000&name=images/[name].[ext]'
             }
         ]
     },
@@ -69,6 +67,7 @@ module.exports = {
             $: 'jquery',
             jQuery: 'jquery',
             'window.jQuery': 'jquery',
+            'window.$': 'jquery',
             Popper: ['popper.js', 'default'],
         }),
     ],

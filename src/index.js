@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { BrowserRouter as Router, Route, HashRouter } from 'react-router-dom';
+import { Route, HashRouter } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
 import myReducer from './reducers/index';
 import { Provider } from 'react-redux';
@@ -9,9 +9,13 @@ import thunk from 'redux-thunk';
 import '../assets/font/raleway.css';
 import '../assets/css/style.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
+// import('webpack-jquery-ui/css');
 import 'animate.css';
 import 'jquery';
+import 'webpack-jquery-ui';
 import 'bootstrap/dist/js/bootstrap.min';
+import '../assets/js/global-custom';
+
 const store = createStore(myReducer,applyMiddleware(thunk));
 
 const routes = (

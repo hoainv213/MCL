@@ -1,5 +1,5 @@
 import React ,{Component} from 'react';
-import bg_home from '../../assets/images/bg_home.jpg';
+import bg_home from '../../../assets/images/bg_home.jpg';
 
 class Bg_banner extends Component{
 

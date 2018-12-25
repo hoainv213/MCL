@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Bg_banner from "../Bg_banner";
+import Bg_banner from "../Layout/Bg_banner";
 import image_1 from "../../../assets/images/s3.jpg";
 import image_2 from "../../../assets/images/section1.jpg";
 import li from "../../../assets/images/icon-left.png";
