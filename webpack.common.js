@@ -14,13 +14,19 @@ const VENDOR_LIBS = [
     'react-dom',
     'react-redux',
     'react-router-dom',
-    'redux'
+    'redux',
+    'webpack-jquery-ui',
+    'owl.carousel2/dist/assets/owl.carousel.css',
+    'animate.css',
+    'bootstrap/dist/css/bootstrap.min.css',
+    'redux-thunk',
+    'owl.carousel'
 ];
 
 module.exports = {
     entry: {
         app: './src/index.js',
-        vendor: VENDOR_LIBS
+        vendor: VENDOR_LIBS,
     },
     output: {
         filename: '[name].bundle.js',
@@ -85,5 +91,11 @@ module.exports = {
     },
     devServer: {
         disableHostCheck: true
+    },
+    resolve: {
+        modules: ['node_modules'],
+        alias: {
+            'owl.carousel': 'owl.carousel2/dist/owl.carousel.min.js'
+        }
     }
 };

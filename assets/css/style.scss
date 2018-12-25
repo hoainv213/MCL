@@ -6,11 +6,9 @@ body {
   padding: 0;
   font-size: 16px;
 }
-
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6{
   font-family: 'Raleway', sans-serif;
 }
-
 h1 {
   font-size: 28px;
   font-weight: 600;
@@ -710,18 +708,15 @@ button i.rotate180 {
 }
 
 .content-slide .d-owl-carousel {
-  width: calc(100% - (20px + 1vw));
+  width: 550px;
   height: 205px;
-  float: left;
+  float: right;
   overflow: hidden;
-  padding-left: 20px;
-  padding-right: 20px;
   transition: background-color 1s ease;
   background-image: linear-gradient(to top, rgba(0, 0, 0, .15), rgba(0, 0, 0, .25));
 }
 
 .control-slide {
-  text-align: right;
   float: right;
 }
 
@@ -733,12 +728,12 @@ button i.rotate180 {
   cursor: pointer;
   padding: 0;
   border: none;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: 9;
   font-size: 30px;
   transition: background-color 1s ease;
+}
+
+.carousel-main .owl-item:last-child{
+  margin-right: 0 !important;
 }
 
 .content-slide button.btn-control i {
@@ -758,7 +753,7 @@ button i.rotate180 {
 }
 
 .content-slide .title-silde {
-  margin: 10px 0;
+  margin: 12px 0;
 }
 
 .content-slide .title-silde h4 {
@@ -1064,7 +1059,7 @@ button i.rotate180 {
 .carousel-main-bg .content-highlight {
   position: absolute;
   bottom: 104px;
-  left: 450px;
+  left: 400px;
   transform: translateX(-15%);
 }
 
@@ -1244,6 +1239,7 @@ button i.rotate180 {
 .main-slide-des .content-slide .d-content-project-feature {
   width: auto;
   float: right;
+  padding: 0 40px;
 }
 
 .content-project-feature .item-owlcarousel img {
@@ -1256,7 +1252,6 @@ button i.rotate180 {
   width: 220px;
   min-width: 150px;
   float: left;
-  margin-right: 2.6vw;
 }
 
 .main-slide-des .btn-ccse {

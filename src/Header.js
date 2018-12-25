@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import Logo from './../assets/images/logo.png';
 import ScrollAnimation from "react-animate-on-scroll";
 import Nav from './component/Layout/Nav';
-import ItemCurrentProject from "./component/Home/ItemCurrentProject";
 import {fetchCurrentProjects} from "./actions/index";
 
 class Header extends Component {
@@ -15,9 +14,11 @@ class Header extends Component {
 
     render() {
         let {projectsCurrent} = this.props;
-        console.log(projectsCurrent);
+        if(projectsCurrent.length > 0){
+
+        }
         return (
-            <div id="page-header">
+            <div id="page-header" className="feed site row clear-margin">
                 <header id="masthead" className="site-header col-lg-4x clear-padding clear-margin" role="banner">
                     <div className="site-branding  site-branding--image logo p-relative">
                         <Link to={'/'}><img className="logo main-logo" src={Logo} alt="logo"/></Link>
@@ -47,23 +48,7 @@ class Header extends Component {
                             </div>
                             <div className="carousel-main owl-carousel animation-shake">
                                 {
-                                    projectsCurrent.map((value, index) => {
-                                        return(
-                                            <div className="item-owlcarousel" key={index}>
-                                                <div className="overflow-hidden image-ob-fit">
-                                                    <Link to={`/project/`+value.id}>
-                                                        <img className="hover-zoom delay-animation-mcl"
-                                                             src={'/'}/>
-                                                    </Link>
-                                                </div>
-                                                <div className="block-text text-center">
-                                                    <Link className="a-animation"
-                                                          to={'/'}>
-                                                        <h5 className="limit-text-1">{value.value}</h5></Link>
-                                                </div>
-                                            </div>
-                                        )
-                                    })
+                                    this.showCurrentProjects(projectsCurrent)
                                 }
 
                             </div>
@@ -88,20 +73,31 @@ class Header extends Component {
 
     }
 
-    // showCurrentProjects = (projectsCurrent) => {
-    //     var result = null;
-    //     if (projectsCurrent.length > 0) {
-    //         result = projectsCurrent.map((value, index) => {
-    //             return (
-    //                 <ItemCurrentProject
-    //                     key={index}
-    //                     project={value}
-    //                 />
-    //             )
-    //         });
-    //     }
-    //     return result;
-    // }
+    showCurrentProjects = (projectsCurrent) => {
+        var result = null;
+        if (projectsCurrent.length > 0) {
+            result = projectsCurrent.map((value, index) => {
+                return (
+                    <div className="item-owlcarousel" key={index}>
+                        <div className="overflow-hidden image-ob-fit">
+                            <Link to={`/project/` + value.id}>
+                                <img className="hover-zoom delay-animation-mcl"
+                                     src={value.image}/>
+                            </Link>
+                        </div>
+                        <div className="block-text text-center">
+                            <Link className="a-animation"
+                                  to={'/project/' + value.id}>
+                                <h5 className="limit-text-1">{value.value}</h5></Link>
+                        </div>
+                    </div>
+
+                )
+            });
+
+        }
+        return result;
+    }
 }
 
 const mapStateToProps = (state) => {
