@@ -5,6 +5,7 @@ import Logo from './../assets/images/logo.png';
 import ScrollAnimation from "react-animate-on-scroll";
 import Nav from './component/Layout/Nav';
 import {fetchCurrentProjects} from "./actions/index";
+import Slide from 'react-slick';
 
 class Header extends Component {
 
@@ -14,9 +15,14 @@ class Header extends Component {
 
     render() {
         let {projectsCurrent} = this.props;
-        if(projectsCurrent.length > 0){
+        var settings = {
+            dots: false,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 2,
+            slidesToScroll: 2,
 
-        }
+        };
         return (
             <div id="page-header" className="feed site row clear-margin">
                 <header id="masthead" className="site-header col-lg-4x clear-padding clear-margin" role="banner">
@@ -46,12 +52,11 @@ class Header extends Component {
                             <div className="title-silde">
                                 <h4 className="letter-spacing-2">CURRENT LAUNCHES</h4>
                             </div>
-                            <div className="carousel-main owl-carousel animation-shake">
-                                {
-                                    this.showCurrentProjects(projectsCurrent)
-                                }
+                            <Slide>
+                                {this.showCurrentProjects(projectsCurrent)}
+                            </Slide>
 
-                            </div>
+
                         </div>
                     </div>
                 </div>

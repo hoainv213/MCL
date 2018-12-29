@@ -1,7 +1,7 @@
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const devMode = process.env.NODE_ENV !== 'production';
 const webpack = require('webpack');
 
@@ -16,11 +16,9 @@ const VENDOR_LIBS = [
     'react-router-dom',
     'redux',
     'webpack-jquery-ui',
-    'owl.carousel2/dist/assets/owl.carousel.css',
     'animate.css',
     'bootstrap/dist/css/bootstrap.min.css',
     'redux-thunk',
-    'owl.carousel'
 ];
 
 module.exports = {
@@ -40,7 +38,10 @@ module.exports = {
             },
             {
                 test: /\.scss$|\.css$/,
-                use:  [  'style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
+                use: ExtractTextPlugin.extract({
+                        fallback: 'style-loader',
+                        use: ['css-loader', 'sass-loader','postcss-loader']
+                })
             },
             {
                 test: /.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
@@ -66,7 +67,7 @@ module.exports = {
             template: 'index.html',
             favicon: './assets/images/icons8.png',
         }),
-        new MiniCssExtractPlugin({
+        new ExtractTextPlugin({
             filename: '[name].css',
         }),
         new webpack.ProvidePlugin({
@@ -91,11 +92,5 @@ module.exports = {
     },
     devServer: {
         disableHostCheck: true
-    },
-    resolve: {
-        modules: ['node_modules'],
-        alias: {
-            'owl.carousel': 'owl.carousel2/dist/owl.carousel.min.js'
-        }
     }
 };

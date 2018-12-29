@@ -84,17 +84,15 @@ $(document).ready(function () {
     //     }
     // });
 
-    $(function () {
-        $('#list-menu').accordion({
-            active: false,
-            header: "h3.item-menu-has",
-            collapsible: true,
-            autoHeight: true,
-            animate: 800,
-            heightStyle: "content",
-            icons: false
-        });
-    });
+    // $('#list-menu').accordion({
+    //     active: false,
+    //     header: "h3.item-menu-has",
+    //     collapsible: true,
+    //     autoHeight: true,
+    //     animate: 800,
+    //     heightStyle: "content",
+    //     icons: false
+    // });
 
     // $(".carousel-main-bg").owlCarousel({
     //     autoplayTimeout: 5000,
@@ -126,7 +124,18 @@ $(document).ready(function () {
         $(this).toggleClass('active')
     });
 
-
+    // $(".carousel-main").owlCarousel({
+    //     autoplayTimeout: 6000,
+    //     margin:40,
+    //     smartSpeed: 600,
+    //     autoplayHoverPause: true,
+    //     autoplay: true,
+    //     loop: false,
+    //     stagePadding:20,
+    //     items: 2,
+    //     responsiveClass: true,
+    //     navigation: false,
+    // });
     // $('#current-project-mb').accordion({
     //
     //     active: false,

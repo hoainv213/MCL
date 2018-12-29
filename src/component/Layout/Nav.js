@@ -6,7 +6,7 @@ import {fetchMenu} from "../../actions/index";
 class Nav extends Component {
 
     componentDidMount() {
-        this.props.fetchMenu()
+        this.props.fetchMenu();
     }
 
     render() {
@@ -15,7 +15,9 @@ class Nav extends Component {
             <div id="list-menu">
                 {this.formatNav(menu)}
             </div>
+
         );
+
     }
 
     formatNav = (menu) => {
