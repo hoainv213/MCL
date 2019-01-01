@@ -49,7 +49,6 @@ class Home extends Component{
 const mapStateToProps = (state) => {
     return {
         linkSection: state.linkSection
-
     }
 };
 const mapDispathToProps = (dispatch, props) =>{

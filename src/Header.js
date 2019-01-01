@@ -7,6 +7,7 @@ import Nav from './component/Layout/Nav';
 import {fetchCurrentProjects} from "./actions/index";
 import Slide from 'react-slick';
 
+
 class Header extends Component {
 
     componentDidMount() {
@@ -15,13 +16,14 @@ class Header extends Component {
 
     render() {
         let {projectsCurrent} = this.props;
-        var settings = {
-            dots: false,
-            infinite: true,
-            speed: 500,
-            slidesToShow: 2,
-            slidesToScroll: 2,
-
+        let settings = {
+            arrows:         false,
+            autoplay:       false,
+            autoplaySpeed:  4500,
+            infinite:       false,
+            slidesToShow:   2,
+            slidesToScroll: 1,
+            rows:           1
         };
         return (
             <div id="page-header" className="feed site row clear-margin">
@@ -29,13 +31,13 @@ class Header extends Component {
                     <div className="site-branding  site-branding--image logo p-relative">
                         <Link to={'/'}><img className="logo main-logo" src={Logo} alt="logo"/></Link>
                         <div className="angleDown"><i className="fa fa-angle-down"/></div>
-                        <div className="btn-on-mobile">
-                            <button type="button" id="sidebarCollapse" className="active navbar-btn angleDown">
-                                <span/>
-                                <span/>
-                                <span/>
-                            </button>
-                        </div>
+                        {/*<div className="btn-on-mobile">*/}
+                            {/*<button type="button" id="sidebarCollapse" className="active navbar-btn angleDown">*/}
+                                {/*<span/>*/}
+                                {/*<span/>*/}
+                                {/*<span/>*/}
+                            {/*</button>*/}
+                        {/*</div>*/}
                     </div>
                     <div className="main-menu p-relative padding-top-30">
                         <Nav/>
@@ -52,7 +54,7 @@ class Header extends Component {
                             <div className="title-silde">
                                 <h4 className="letter-spacing-2">CURRENT LAUNCHES</h4>
                             </div>
-                            <Slide>
+                            <Slide {...settings} className="slick-main">
                                 {this.showCurrentProjects(projectsCurrent)}
                             </Slide>
 
@@ -79,6 +81,7 @@ class Header extends Component {
     }
 
     showCurrentProjects = (projectsCurrent) => {
+        console.log(projectsCurrent);
         var result = null;
         if (projectsCurrent.length > 0) {
             result = projectsCurrent.map((value, index) => {
@@ -93,11 +96,11 @@ class Header extends Component {
                         <div className="block-text text-center">
                             <Link className="a-animation"
                                   to={'/project/' + value.id}>
-                                <h5 className="limit-text-1">{value.value}</h5></Link>
+                                <h5 className="limit-text-1">{value.name}</h5></Link>
                         </div>
                     </div>
-
                 )
+
             });
 
         }
