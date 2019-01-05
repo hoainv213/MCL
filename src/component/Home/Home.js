@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import Bg_banner from '../Layout/Bg_banner';
-import ItemCurrentProject from './ItemCurrentProject';
 import ProjectLinkItem from './projectLinkItem';
-import ScrollAnimation from 'react-animate-on-scroll';
 import { connect } from 'react-redux';
 import { fetchLinkSection } from "../../actions/index";
 import Loading from './../../loading';
@@ -51,7 +49,7 @@ const mapStateToProps = (state) => {
         linkSection: state.linkSection
     }
 };
-const mapDispathToProps = (dispatch, props) =>{
+const mapDispatchToProps = (dispatch, props) =>{
     return{
         fetchAll : () =>{
             dispatch(fetchLinkSection());
@@ -59,4 +57,4 @@ const mapDispathToProps = (dispatch, props) =>{
 
     }
 };
-export default connect(mapStateToProps,mapDispathToProps)(Home);
+export default connect(mapStateToProps,mapDispatchToProps)(Home);

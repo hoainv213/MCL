@@ -34,7 +34,7 @@ $(document).ready(function () {
     );
     $('.angleDown').click(function () {
         var this_eh = $(this);
-        this_eh.children('i.fa-angle-down').toggleClass('rotate180');
+        this_eh.children('.toggle-arrow').toggleClass('rotate180');
         this_eh.addClass('pointer-events-none');
         stack.css('background-color', 'rgba(0,0,0,.8)');
         $("#masthead .main-menu").toggle('slide', {direction: 'up'}, 1000, function () {
@@ -43,17 +43,15 @@ $(document).ready(function () {
             check_hover(stack);
         });
     });
-    $('.btn-control').click(function () {
-        var this_eh = $(this);
-        owl.trigger('stop.owl.autoplay');
-        $(this).addClass('pointer-events-none');
-        $(".d-owl-carousel").toggle('slide', {direction: 'right'}, 1500, function () {
-            this_eh.removeClass('pointer-events-none');
-            owl.trigger('play.owl.autoplay');
-            check_hover(stack);
-        });
-        this_eh.children('i').toggleClass('rotate180');
-    });
+    // $('.btn-control').click(function () {
+    //     var this_eh = $(this);
+    //     $(this).addClass('pointer-events-none');
+    //     $(".d-owl-carousel").toggle('slide', {direction: 'right'}, 1500, function () {
+    //         this_eh.removeClass('pointer-events-none');
+    //         check_hover(stack);
+    //     });
+    //     this_eh.children('.toggle-arrow').toggleClass('rotate180');
+    // });
     $('.title-slide').click(function () {
         $(".mb-slide").toggle('slide', {direction: 'up'}, 1500, function () {
         });
@@ -63,89 +61,11 @@ $(document).ready(function () {
             scrollTop: $("div.content-category").offset().top
         }, 600)
     });
-    // Project Detail
-    // $(".detail-carousel").owlCarousel({
-    //     autoplay: false,
-    //     margin: 15,
-    //     // loop:true,
-    //     items: 3,
-    //     dots: false,
-    //     navigation: true,
-    //     nav: true,
-    //     responsiveClass: true,
-    //     navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
-    //     responsive: {
-    //         0: {
-    //             margin: 5,
-    //         },
-    //         1024: {
-    //             margin: 10,
-    //         }
-    //     }
-    // });
-
-    // $('#list-menu').accordion({
-    //     active: false,
-    //     header: "h3.item-menu-has",
-    //     collapsible: true,
-    //     autoHeight: true,
-    //     animate: 800,
-    //     heightStyle: "content",
-    //     icons: false
-    // });
-
-    // $(".carousel-main-bg").owlCarousel({
-    //     autoplayTimeout: 5000,
-    //     smartSpeed: 500,
-    //     autoplay: true,
-    //     loop: true,
-    //     items: 1,
-    //     singleItem: true,
-    //     animateOut: 'fadeOut',
-    //     animateIn: 'fadeIn',
-    //     dotsEach: false,
-    //     dots: false,
-    //     responsive: {
-    //         0: {
-    //             dotsEach: true,
-    //             dots: true,
-    //             dotsClass: 'owl-dots dot-ehat',
-    //         },
-    //         480: {
-    //             dotsEach: true,
-    //             dots: true,
-    //             dotsClass: 'owl-dots dot-ehat',
-    //         }
-    //     }
-    // });
 
     //Function button on mobile
     $('.btn-on-mobile button').click(function () {
         $(this).toggleClass('active')
     });
-
-    // $(".carousel-main").owlCarousel({
-    //     autoplayTimeout: 6000,
-    //     margin:40,
-    //     smartSpeed: 600,
-    //     autoplayHoverPause: true,
-    //     autoplay: true,
-    //     loop: false,
-    //     stagePadding:20,
-    //     items: 2,
-    //     responsiveClass: true,
-    //     navigation: false,
-    // });
-    // $('#current-project-mb').accordion({
-    //
-    //     active: false,
-    //     header: "h4.title-accordion",
-    //     icons: {"header": "poer fa fa-angle-down", "activeHeader": ""},
-    //     collapsible: true,
-    //     autoHeight: true,
-    //     animate: 1000,
-    //     heightStyle: "content"
-    // });
 
     var userAgent, ieReg, ie;
     userAgent = window.navigator.userAgent;

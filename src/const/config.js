@@ -1,1 +1,1 @@
-export const API_URL = 'http://mclland.infinitystudios.vn/api/v1';
+export const API_URL = 'http://land.local/api/v1';

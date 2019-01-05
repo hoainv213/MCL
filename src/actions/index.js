@@ -46,3 +46,18 @@ export const actionMenu = (menu) =>{
         ...menu
     }
 };
+
+export const fetchFilterMasterpieces = () =>{
+    return dispatch =>{
+        return callApi('properties-project','GET').then(res=>{
+            dispatch(actionFilterMasterpieces(res.data));
+        })
+    }
+};
+
+export const actionFilterMasterpieces = (masterpieces) =>{
+    return{
+        type: types.FILTER_MASTERPIECES,
+        ...masterpieces
+    }
+};

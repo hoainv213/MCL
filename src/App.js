@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import {fetchMenu} from "./actions/index";
 import Home from './component/Home/Home';
 import About from './component/About/About';
+import Masterpieces from './component/OurMasterpieces/ourMasterpieces';
 import NotFound from './NotFound';
 
 
@@ -34,28 +35,51 @@ class App extends Component {
         if (menu.length > 0) {
             result = menu.map((value, index) => {
                 return (
-                    <Route
-                        key={index}
-                        path={value.url}
-                        exact={true}
-                        component={this.attachComponent(value.title)}
-                    />
+                    this.attachComponent(index,value.url,value.title)
                 );
             });
         }
         return <Switch>{result}</Switch>;
     };
 
-    attachComponent = (title) => {
-        switch (title) {
+    attachComponent = (key,path,component) => {
+        switch (component) {
             case 'Home':
-                return Home;
+                return (
+                    <Route
+                        key={key}
+                        path={path}
+                        exact={true}
+                        component={Home}
+                    />
+                );
             case 'About us':
-                return About;
+                return (
+                    <Route
+                        key={key}
+                        path={path}
+                        exact={true}
+                        component={About}
+                    />
+                );
             case 'OUR MASTERPIECES':
-                return NotFound;
+                return (
+                    <Route
+                        key={key}
+                        path={path}
+                        exact={true}
+                        component={Masterpieces}
+                    />
+                );
             default:
-                return NotFound;
+                return (
+                    <Route
+                        key={key}
+                        path="*"
+                        exact={false}
+                        component={NotFound}
+                    />
+                );
         }
     }
 }

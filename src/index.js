@@ -6,7 +6,6 @@ import { createStore, applyMiddleware } from 'redux';
 import myReducer from './reducers/index';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-// import 'font-awesome/css/font-awesome.min.css';
 import '../assets/font/raleway.css';
 import '../assets/css/style.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,6 +14,9 @@ import 'jquery';
 import 'webpack-jquery-ui';
 import 'bootstrap/dist/js/bootstrap.min';
 import '../assets/js/global-custom';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faIgloo } from '@fortawesome/free-solid-svg-icons';
+library.add(faIgloo);
 
 const store = createStore(myReducer,applyMiddleware(thunk));
 

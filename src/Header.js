@@ -6,37 +6,56 @@ import ScrollAnimation from "react-animate-on-scroll";
 import Nav from './component/Layout/Nav';
 import {fetchCurrentProjects} from "./actions/index";
 import Slide from 'react-slick';
-
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faAngleDown} from '@fortawesome/free-solid-svg-icons';
+import {faAngleRight} from '@fortawesome/free-solid-svg-icons';
 
 class Header extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            isToggle: true
+        };
+        this.toggleShow = this.toggleShow.bind(this);
+    }
+
+    toggleShow() {
+        this.setState(state => ({
+            isToggle: !state.isToggle
+        }));
+    }
 
     componentDidMount() {
         this.props.fetchCurrentProjects();
     }
 
+
     render() {
         let {projectsCurrent} = this.props;
         let settings = {
-            arrows:         false,
-            autoplay:       false,
-            autoplaySpeed:  4500,
-            infinite:       false,
-            slidesToShow:   2,
+            arrows: false,
+            autoplay: false,
+            autoplaySpeed: 4500,
+            infinite: false,
+            slidesToShow: 2,
             slidesToScroll: 1,
-            rows:           1
+            rows: 1
         };
         return (
             <div id="page-header" className="feed site row clear-margin">
                 <header id="masthead" className="site-header col-lg-4x clear-padding clear-margin" role="banner">
                     <div className="site-branding  site-branding--image logo p-relative">
                         <Link to={'/'}><img className="logo main-logo" src={Logo} alt="logo"/></Link>
-                        <div className="angleDown"><i className="fa fa-angle-down"/></div>
+                        <div className="angleDown">
+                            <FontAwesomeIcon className="toggle-arrow toggle-arrow-affect" icon={faAngleDown}/>
+                        </div>
                         {/*<div className="btn-on-mobile">*/}
-                            {/*<button type="button" id="sidebarCollapse" className="active navbar-btn angleDown">*/}
-                                {/*<span/>*/}
-                                {/*<span/>*/}
-                                {/*<span/>*/}
-                            {/*</button>*/}
+                        {/*<button type="button" id="sidebarCollapse" className="active navbar-btn angleDown">*/}
+                        {/*<span/>*/}
+                        {/*<span/>*/}
+                        {/*<span/>*/}
+                        {/*</button>*/}
                         {/*</div>*/}
                     </div>
                     <div className="main-menu p-relative padding-top-30">
@@ -45,20 +64,20 @@ class Header extends Component {
                 </header>
                 <div className="main-slide-des col-lg-8x clear-padding">
                     <div className="content-slide">
-                        <div className="control-slide">
-                            <button className="btn-control color-white">
-                                <i className="fa fa-angle-double-right rotate180"/>
-                            </button>
-                        </div>
-                        <div className="d-owl-carousel width_dw_">
+
+
+                        <div className={this.state.isToggle ? 'slide_toggle_on d-owl-carousel width_dw_ toggle-slide' : 'slide_toggle_off d-owl-carousel width_dw_ toggle-slide'} >
                             <div className="title-silde">
                                 <h4 className="letter-spacing-2">CURRENT LAUNCHES</h4>
                             </div>
                             <Slide {...settings} className="slick-main">
                                 {this.showCurrentProjects(projectsCurrent)}
                             </Slide>
-
-
+                        </div>
+                        <div className="control-slide">
+                            <button className="btn-control color-white" onClick={this.toggleShow}>
+                                <FontAwesomeIcon className={this.state.isToggle ? 'toggle-arrow toggle-arrow-affect' : 'toggle-arrow toggle-arrow-affect rotate180'} icon={faAngleRight}/>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -81,7 +100,6 @@ class Header extends Component {
     }
 
     showCurrentProjects = (projectsCurrent) => {
-        console.log(projectsCurrent);
         var result = null;
         if (projectsCurrent.length > 0) {
             result = projectsCurrent.map((value, index) => {
